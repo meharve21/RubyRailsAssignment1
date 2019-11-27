@@ -9,14 +9,32 @@
 </head>
 <body>
 
+
+
+
 <div id="Itemlist">
-    <button v-on:click="doajax('makes')">makes</button>
-    <button v-on:click="doajax('cars')">cars</button>
-    <button v-on:click="doajax('parts')">parts</button>
+    <button v-on:click="cars_selected=false; doajax('makes');">makes</button>
+    <button v-on:click="cars_selected=true; doajax('cars');">cars</button>
+    <button v-on:click="cars_selected=false; doajax('parts');">parts</button>
     <ul>
-    <div v-for="item in items">
-        <li>{{item.name}}</li>
+        <div v-for="item in items">
+            <li>{{item.name}}</li>
+        </div>
+    <span v-if="cars_selected">
+    <div v-for="car in cars">
+        <li>{{car.name}},{{makes[car.make_id].name}}</li>
     </div>
+    </span>
+    <span v-else>
+        <div v-for="make in makes">
+            <li>{{make.name}}</li>
+            <div v-for="car in cars">
+            <span v-if="car.make_id === make.id">
+            {{ car.name }}
+            </span>
+        </div>
+        </div>
+    </span>
     </ul>
 </div>
 

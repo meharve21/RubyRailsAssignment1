@@ -10,11 +10,11 @@
   <%= @car.make.name %>
 </p>
 
-<ul>
+<p>
    <% @car.parts.each do |part| %>
     <li><%= part.name %></li>
    <% end %>
-</ul>
+</p>
 
 
 <%= link_to 'Edit', edit_car_path(@car) %> |
