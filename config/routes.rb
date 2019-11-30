@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: redirect("vuespa.html") #need to change this to vuespa but don't know syntax
+  root to: "cars#index" #need to change this to vuespa but don't know syntax
   resources :parts
   resources :makes
   resources :cars
